@@ -1,0 +1,33 @@
+var query = from book in books
+ where book.Author == "Stephen King"
+ select book;
+from car in cars
+ where car.Contains("VW")
+ select car;
+from car in cars
+ orderby car ascending
+ select car;
+
+var list = from car in cars
+ where car.UnitsSold > 60000
+ orderby car.UnitsSold descending
+ select car;
+StringBuilder sb = new StringBuilder();
+foreach (var entry in list)
+{
+ sb.AppendLine($"{entry.Name} - {entry.UnitsSold}");
+}
+Console.WriteLine(sb.ToString());
+
+var list = from car in cars
+ where car.UnitsSold % 2 != 0
+ orderby car.Name ascending
+ select car;
+
+
+int[] numbers = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+var aboveAverages = from number in numbers
+ let average = numbers.Average()
+ let nSquared = Math.Pow(number,2)
+ where nSquared > average
+select number;
